@@ -1,7 +1,7 @@
 ---
 - name: Copy librenms vhost
   ansible.builtin.template:
-    src: files/librenms.vhost.j2
+    src: templates/librenms.vhost.j2
     dest: /etc/nginx/sites-enabled/librenms.vhost
     owner: www-data
     group: www-data

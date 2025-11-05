@@ -1,0 +1,28 @@
+---
+- name: Install SNMPD
+  ansible.builtin.apt:
+    name: snmpd
+    state: present
+
+- name: Make sure SNMPD is running
+  ansible.builtin.service:
+    name: snmpd
+    state: started
+    enabled: true
+
+- name: Copy SNMPD template
+  ansible.builtin.template:
+    src: templates/snmpd.conf.j2
+    dest: /etc/snmp/snmpd.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart snmpd
+
+- name: Download librenms snmpd script
+  ansible.builtin.get_url:
+    url: >
+      https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/distro
+    dest: /usr/bin/distro
+    mode: '0755'
+  notify: Restart snmpd

@@ -94,3 +94,13 @@
     /opt/librenms/scripts/composer_wrapper.php install --no-dev
   args:
     creates: /opt/librenms/composer.phar
+
+- name: Copy librenms cronjob file to system cronjob
+  ansible.builtin.copy:
+    src: "/opt/librenms/dist/librenms.cron"
+    dest: /etc/cron.d/librenms
+    owner: root
+    group: root
+    mode: '0644'
+    remote_src: true
+    force: false

@@ -1,7 +1,7 @@
 ---
 - name: Restart nginx
   ansible.builtin.service:
-    name: ngingx
+    name: nginx
     state: restarted
 
 - name: Restart mariadb
