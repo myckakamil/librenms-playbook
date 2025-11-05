@@ -1,0 +1,14 @@
+---
+- name: Zmień strefę czasową systemu
+  community.general.timezone:
+    name: "{{ tz }}"
+
+- name: Zmień strefę czasową w php
+  ansible.builtin.lineinfile:
+    path: "{{ item }}"
+    regexp: "^;?date.timezone ="
+    line: "date.timezone = {{ tz }}"
+    backup: true
+  loop:
+    - "/etc/php/8.4/fpm/php.ini"
+    - "/etc/php/8.4/cli/php.ini"

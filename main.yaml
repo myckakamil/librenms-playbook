@@ -20,3 +20,5 @@
       ansible.builtin.import_tasks: tasks/configure_user.yaml
     - name: Install packages
       ansible.builtin.import_tasks: tasks/install_packages.yaml
+    - name: Set correct timezone
+      ansible.builtin.import_tasks: tasks/configure_timezone.yaml

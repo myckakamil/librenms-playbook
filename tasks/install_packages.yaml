@@ -86,3 +86,11 @@
     - /opt/librenms/logs
     - /opt/librenms/bootstrap/cache
     - /opt/librenms/storage
+
+- name: Run lnms installer script
+  become_user: librenms
+  become: true
+  ansible.builtin.command: >
+    /opt/librenms/scripts/composer_wrapper.php install --no-dev
+  args:
+    creates: /opt/librenms/composer.phar
