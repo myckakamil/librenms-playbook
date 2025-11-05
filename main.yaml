@@ -4,6 +4,10 @@
   become: true
 
   pre_tasks:
+    - name: Upadate apt cache
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
     - name: Include vars
       ansible.builtin.include_vars: vars/config.yaml
 
@@ -12,7 +16,7 @@
       ansible.builtin.import_tasks: tasks/handlers.yaml
 
   tasks:
-    - name: Install packages
-      ansible.builtin.import_tasks: tasks/install_packages.yaml
     - name: Create librenms user
       ansible.builtin.import_tasks: tasks/configure_user.yaml
+    - name: Install packages
+      ansible.builtin.import_tasks: tasks/install_packages.yaml

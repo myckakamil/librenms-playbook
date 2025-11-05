@@ -9,5 +9,5 @@
 
 - name: Add apache user to librenms group
   ansible.builtin.user:
-    name: "{{ apache_user }}"
-    groups: "{{ apache_user }},librenms"
+    name: www-data
+    groups: www-data,librenms
