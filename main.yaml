@@ -26,3 +26,5 @@
       ansible.builtin.import_tasks: tasks/configure_timezone.yaml
     - name: Configure mariadb database
       ansible.builtin.import_tasks: tasks/configure_mariadb.yaml
+    - name: Configure php-fpm
+      ansible.builtin.import_tasks: tasks/configure_php-fpm.yaml

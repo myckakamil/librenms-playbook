@@ -1,0 +1,31 @@
+---
+- name: Create librenms pool
+  ansible.builtin.copy:
+    dest: /etc/php/8.4/fpm/pool.d/librenms.conf
+    content: |
+      [librenms]
+      user = librenms
+      group = librenms
+      listen = /run/php-fpm-librenms.sock
+      listen.owner = www-data
+      listen.group = www-data
+      listen.mode = 0660
+      pm = dynamic
+      pm.max_children = 5
+      pm.start_servers = 2
+      pm.min_spare_servers = 1
+      pm.max_spare_servers = 3
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart php-fpm
+
+- name: Force restart services
+  ansible.builtin.meta: flush_handlers
+
+- name: Change php-fpm-librenms.sock privileges
+  ansible.builtin.file:
+    path: "/run/php-fpm-librenms.sock"
+    owner: www-data
+    group: www-data
+    mode: "0660"
