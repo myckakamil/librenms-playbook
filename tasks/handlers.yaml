@@ -18,3 +18,8 @@
   ansible.builtin.service:
     name: snmpd
     state: restarted
+
+- name: Restart librenms-scheduler
+  ansible.builtin.service:
+    name: librenms-scheduler.timer
+    state: restarted

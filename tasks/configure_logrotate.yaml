@@ -1,0 +1,9 @@
+---
+- name: Copy default logrotate config
+  ansible.builtin.copy:
+    src: "/opt/librenms/misc/librenms.logrotate"
+    dest: /etc/logrotate.d/librenms
+    remote_src: true
+    owner: root
+    group: root
+    mode: '0644'

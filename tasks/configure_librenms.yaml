@@ -1,0 +1,8 @@
+---
+- name: Copy librenms seeder files
+  ansible.builtin.copy:
+    src: "templates/lnms-config.yaml"
+    dest: /opt/librenms/database/seeders/config/
+    owner: librenms
+    group: librenms
+    mode: "0644"

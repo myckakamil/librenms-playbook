@@ -1,0 +1,20 @@
+---
+- name: Copy LibreNMS scheduler and timer to systemd directory
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: /etc/systemd/system/
+    remote_src: true
+    owner: root
+    group: root
+    mode: '0644'
+    force: false
+  loop:
+    - "/opt/librenms/dist/librenms-scheduler.service"
+    - "/opt/librenms/dist/librenms-scheduler.timer"
+  notify: Restart librenms-scheduler
+
+- name: Run librenms-scheduler deamon and timer
+  ansible.builtin.systemd:
+    name: librenms-scheduler.timer
+    state: started
+    enabled: true

@@ -32,3 +32,9 @@
       ansible.builtin.import_tasks: tasks/configure_nginx.yaml
     - name: Configure SNMPD # In future I want to replace this task with role
       ansible.builtin.import_tasks: tasks/configure_snmpd.yaml
+    - name: Configure librenms scheduler
+      ansible.builtin.import_tasks: tasks/configure_lnms_scheduler.yaml
+    - name: Configure logrotate
+      ansible.builtin.import_tasks: tasks/configure_logrotate.yaml
+    - name: Configure dispatcher
+      ansible.builtin.import_tasks: tasks/configure_dispatcher.yaml

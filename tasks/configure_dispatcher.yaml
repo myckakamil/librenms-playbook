@@ -1,0 +1,22 @@
+---
+- name: Install required pip packages
+  become_user: librenms
+  become: true
+  ansible.builtin.pip:
+    requirements: "/opt/librenms/requirements.txt"
+    extra_args: "--break-system-packages"
+
+- name: Copy dispatcher systemd service
+  ansible.builtin.copy:
+    src: /opt/librenms/misc/librenms.service
+    dest: /etc/systemd/system/librenms.service
+    remote_src: true
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Enable and start librenms dispatcher
+  ansible.builtin.systemd:
+    name: librenms.service
+    enabled: true
+    state: started
