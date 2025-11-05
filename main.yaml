@@ -28,3 +28,5 @@
       ansible.builtin.import_tasks: tasks/configure_mariadb.yaml
     - name: Configure php-fpm
       ansible.builtin.import_tasks: tasks/configure_php-fpm.yaml
+    - name: Configure nginx
+      ansible.builtin.import_tasks: tasks/configure_nginx.yaml

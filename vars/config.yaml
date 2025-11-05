@@ -1,3 +1,4 @@
 ---
 librenms_varsion: "25.10.0"
 tz: "Europe/Warsaw"
+librenms_domain: librenms.lan.mycka.net

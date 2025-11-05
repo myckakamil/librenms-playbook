@@ -1,7 +1,7 @@
 ---
-- name: Restart apache
+- name: Restart nginx
   ansible.builtin.service:
-    name: apache2
+    name: ngingx
     state: restarted
 
 - name: Restart mariadb
@@ -12,4 +12,9 @@
 - name: Restart php-fpm
   ansible.builtin.service:
     name: php8.4-fpm
+    state: restarted
+
+- name: Restart snmpd
+  ansible.builtin.service:
+    name: snmpd
     state: restarted

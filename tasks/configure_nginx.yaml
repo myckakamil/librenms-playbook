@@ -1,0 +1,15 @@
+---
+- name: Copy librenms vhost
+  ansible.builtin.template:
+    src: files/librenms.vhost.j2
+    dest: /etc/nginx/sites-enabled/librenms.vhost
+    owner: www-data
+    group: www-data
+    mode: "0660"
+  notify: Restart nginx
+
+- name: Remove default website
+  ansible.builtin.file:
+    path: "/etc/nginx/sites-enabled/default"
+    state: absent
+  notify: Restart nginx
