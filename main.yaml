@@ -10,6 +10,8 @@
         cache_valid_time: 3600
     - name: Include vars
       ansible.builtin.include_vars: vars/config.yaml
+    - name: Include vault
+      ansible.builtin.include_vars: vars/vault.yaml
 
   handlers:
     - name: Load handlers
@@ -22,3 +24,5 @@
       ansible.builtin.import_tasks: tasks/install_packages.yaml
     - name: Set correct timezone
       ansible.builtin.import_tasks: tasks/configure_timezone.yaml
+    - name: Configure mariadb database
+      ansible.builtin.import_tasks: tasks/configure_mariadb.yaml
