@@ -1,0 +1,13 @@
+---
+- name: Create librenms user
+  ansible.builtin.user:
+    name: librenms
+    home: /home/librenms
+    create_home: true
+    system: true
+    shell: /bin/bash
+
+- name: Add apache user to librenms group
+  ansible.builtin.user:
+    name: "{{ apache_user }}"
+    groups: "{{ apache_user }},librenms"

@@ -1,0 +1,6 @@
+---
+- name: Install required packages
+  ansible.builtin.package:
+    name:
+      - "{{ apache_package_name }}"
+    state: present
