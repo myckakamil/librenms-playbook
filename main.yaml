@@ -3,6 +3,9 @@
   hosts: librenms_server
   become: true
 
+  roles:
+    - myckakamil.snmpd
+
   pre_tasks:
     - name: Upadate apt cache
       ansible.builtin.apt:
@@ -30,8 +33,6 @@
       ansible.builtin.import_tasks: tasks/configure_php-fpm.yaml
     - name: Configure nginx
       ansible.builtin.import_tasks: tasks/configure_nginx.yaml
-    - name: Configure SNMPD # In future I want to replace this task with role
-      ansible.builtin.import_tasks: tasks/configure_snmpd.yaml
     - name: Configure librenms scheduler
       ansible.builtin.import_tasks: tasks/configure_lnms_scheduler.yaml
     - name: Configure logrotate
