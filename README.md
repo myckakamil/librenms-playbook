@@ -4,7 +4,7 @@ Playbook ansible for automated [LibreNMS](https://www.librenms.org/) installatio
 
 Quick start
 ---
-- clone repository
+- Clone repository
 - Install required Ansible role:
 ```
 ansible-galaxy install myckakamil.snmpd
