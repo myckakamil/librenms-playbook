@@ -39,3 +39,12 @@
       ansible.builtin.import_tasks: tasks/configure_logrotate.yaml
     - name: Configure dispatcher
       ansible.builtin.import_tasks: tasks/configure_dispatcher.yaml
+
+- name: Setup https reverse proxy
+  hosts: proxy
+  become: true
+  vars_files:
+    - vars/vault.yaml
+    - vars/config.yaml
+  roles:
+    - myckakamil.proxy

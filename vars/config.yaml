@@ -2,3 +2,8 @@
 librenms_varsion: "25.10.0"
 tz: "Europe/Warsaw"
 librenms_domain: librenms.lan.mycka.net
+
+nginx_proxy_domain: "{{ librenms_domain }}"
+nginx_proxy_email: "{{ snmp_email }}"
+nginx_proxy_backend_port: 80
+nginx_proxy_backend_host: 172.30.20.12
